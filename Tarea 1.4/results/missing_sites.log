@@ -1,0 +1,10 @@
+
+VCFtools - 0.1.18
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf /datos/compartidos/ChileGenomica/GATK_ChGdb_recalibrated_autosomes.12262013.snps.known.vcf
+	--out results/missing_sites
+	--missing-site
+
+Error: Can't determine file type of /datos/compartidos/ChileGenomica/GATK_ChGdb_recalibrated_autosomes.12262013.snps.known.vcf

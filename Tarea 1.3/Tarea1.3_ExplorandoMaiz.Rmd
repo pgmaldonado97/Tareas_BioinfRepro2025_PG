@@ -1,0 +1,80 @@
+---
+title: "Tarea 1.3 Explorando Maiz"
+author: "Pamela Gonzalez"
+date: "2025-09-06"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Preguntas de la Tarea 1.3
+
+## Pregunta 1: ¿Qué tipo de objeto creamos al cargar la base?
+
+```{r}
+maiz <- read.delim("C:/Users/pame5/Documents/BioinfinvRepro/Unidad1/Sesion3/PracUni1Ses3/maices/meta/maizteocintle_SNP50k_meta_extended.txt", fileEncoding = "latin1")
+class(maiz)
+```
+
+## Preguna 2 ¿Cómo se ven las primeras 6 líneas del archivo?
+
+```{r}
+head(maiz) 
+```
+
+## Pregunta 3 ¿Cuántas muestras hay?
+
+```{r}
+nrow(maiz) 
+```
+
+## Pregunta 4 ¿De cuántos estados se tienen muestras?
+
+```{r}
+length(unique(maiz$Estado)) 
+```
+
+## Pregunta 5 ¿Cuántas muestras fueron colectadas antes de 1980?
+
+```{r}
+sum(maiz$A_o._de_colecta < 1980, na.rm = TRUE) 
+```
+
+## Pregunta 6 ¿Cuántas muestras hay de cada raza?
+
+```{r}
+table(maiz$Raza)
+```
+
+## Pregunta 7 En promedio, ¿a qué altitud fueron colectadas las muestras?
+
+```{r}
+mean(maiz$Altitud, na.rm = TRUE)
+```
+
+## Pregunta 8 ¿A qué altitud máxima y mínima fueron colectadas?
+
+```{r}
+max(maiz$Altitud, na.rm = TRUE)
+min(maiz$Altitud, na.rm = TRUE)
+```
+## Pregunta 9 Crear un nuevo data frame solo con las muestras de la raza Olotillo
+
+```{r}
+olotillo <- subset(maiz, Raza == "Olotillo")
+head(olotillo)
+```
+## Pregunta 10 Crear un nuevo data frame solo con las muestras de las razas Reventador, Jala y Ancho
+
+```{r}
+subrazas <- subset(maiz, Raza %in% c("Reventador", "Jala", "Ancho"))
+head(subrazas)
+```
+
+## Pregunta 11 
+```{r}
+write.csv(subrazas,"C:/Users/pame5/Documents/BioinfinvRepro/Unidad1/Sesion3/PracUni1Ses3/maices/meta/submat.csv", row.names = FALSE)
+getwd()
+```
