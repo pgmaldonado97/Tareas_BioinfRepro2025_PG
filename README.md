@@ -36,6 +36,14 @@ El informe también incluye ejercicios desarrollados en **R Markdown**.
 📄 [Ver informe de la Tarea 1.3](Tarea%201.3/00_Informe_Tarea_1.3.md)
 
 ---
+### 🧬 Tarea 1.4 – Sesión 4: Análisis de VCF y PLINK
+
+En esta sesión trabajamos con **VCF** y **PLINK** para realizar filtros de **MAF** y **missingness**, test de **Hardy–Weinberg**, verificación/estimación de **sexo** y una tabla de contingencia **Sexo × Ancestría**.  
+El repositorio incluye código reproducible, resultados y figuras organizados por carpetas.
+
+📄 **[Ver informe de la Tarea 1.4](Tarea%201.4/README.md)**  
+📁 [Carpeta completa](Tarea%201.4/) · 🖼️ [Imágenes](Tarea%201.4/imagen/) · 🧩 [Scripts](Tarea%201.4/code/)
+
 
 ## Actualizaciones futuras
 
