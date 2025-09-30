@@ -139,7 +139,7 @@ Salida / Archivos
 • `results/depth.idepth`
 
 Captura  
-![P5](imagen/pregunta05_vf.png)
+![P5](imagen/pregunta05.png)
 
 ---
 
