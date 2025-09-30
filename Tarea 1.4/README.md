@@ -59,7 +59,7 @@ Salida / Archivos
 • Los resultados fueron de 4450360 y 120159720
 
 Captura  
-![P1](pregunta01.png)
+![P1](imagen/pregunta01.png)
 
 ---
 
