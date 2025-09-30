@@ -78,7 +78,7 @@ Salida / Archivos
 • `results/missing_site.log` (reporte de conteos)
 
 Captura  
-![P2](pregunta02.png)
+![P2](imagen/pregunta02.png)
 
 ---
 
@@ -99,7 +99,7 @@ Salida / Archivos
 • `results/CLG_Chr3_30000_10000000_Mb.vcf.recode.vcf`
 
 Captura  
-![P3](pregunta03.png)
+![P3](imagen/pregunta03.png)
 
 ---
 
@@ -115,7 +115,7 @@ Salida / Archivos
 • 23128
 
 Captura  
-![P4](pregunta04.png)
+![P4](imagen/pregunta04.png)
 
 ---
 
@@ -139,7 +139,7 @@ Salida / Archivos
 • `results/depth.idepth`
 
 Captura  
-![P5](pregunta05_vf.png)
+![P5](imagen/pregunta05_vf.png)
 
 ---
 
@@ -161,7 +161,7 @@ Salida / Archivos
 • `results/allele_freq.frq`
 
 Captura  
-![P6](pregunta06.png)
+![P6](imagen/pregunta06.png)
 
 ---
 
@@ -180,7 +180,7 @@ Salida / Archivos
 • `results/allele_freq_biallelic.frq`
 
 Captura  
-![P7](pregunta07.png)
+![P7](imagen/pregunta07.png)
 
 ---
 
@@ -217,7 +217,7 @@ Salida / Archivos
 • `results/maf_values.tsv`, `results/maf_histogram.png`
 
 Captura  
-![P8](pregunta08.png)![Histograma](maf_histogram.png)
+![P8](imagen/pregunta08.png)![Histograma](results/maf_histogram.png)
 
 ---
 
@@ -236,7 +236,7 @@ Salida / Archivos
 • 3576
 
 Captura  
-![P9](pregunta09.png)
+![P9](imagen/pregunta09.png)
 
 ---
 
@@ -260,7 +260,7 @@ Salida / Archivos
 • `results/heterozygosity.het`
 
 Captura  
-![P10](pregunta10.png)
+![P10](imagen/pregunta10.png)
 
 ---
 
@@ -284,7 +284,7 @@ Salida / Archivos
 • `results/nucleotide_diversity.sites.pi`
 
 Captura  
-![P11](pregunta11.png)
+![P11](imagen/pregunta11.png)
 
 ---
 
@@ -309,7 +309,7 @@ Salida / Archivos
 • `results/allele_biallelic_maf05.recode.vcf`
 
 Captura  
-![P12](pregunta12.png)
+![P12](imagen/pregunta12.png)
 
 ---
 
@@ -334,7 +334,7 @@ Salida / Archivos
 • `results/allele_biallelic_maf05.{bed,bim,fam}`
 
 Captura  
-![P13](pregunta13.png)
+![P13](imagen/pregunta13.png)
 
 ---
 
@@ -528,7 +528,7 @@ Confirma que `IndID` (en `popinfo`) coincide **48/48** con los IIDs del `.fam`.
 Todas las filas muestran **`matches = 0`** para cualquier par `pop_col × meta_col`.  
 ➡️ **No existe llave** entre `popinfo` (48 chilenos) y `maizteocintle_SNP50k_meta_extended.txt`.
 
-El cual puede observarse en la figura no_coincendicas_ejercicio4_p2
+El cual puede observarse en la figura no_coincendicas_ejercicio4_p2 ![Explicacion](imagen/no_coincendicas_ejercicio4_p2.png)
 
 ---
 
@@ -605,7 +605,7 @@ Se documenta el intento, los scripts utilizados y la evidencia generada. Se cont
 - `../results/plink_sexcheck.sexcheck` — salida completa de PLINK.  
 - `../results/plink_sexcheck_problems.csv` — **tabla solicitada** con solo discordantes.
 
-Los resultados ya ejecutados en el servidor pueden observase en la Figura ejercicio6_p2
+Los resultados ya ejecutados en el servidor pueden observase en la Figura ejercicio6_p2 ![Explicacion](imagen/ejercicio6_p2.png) 
 
 ## 7) Tabla de contingencia de individuos por **sexo** y **ancestría** (desde `popinfo`)
 
@@ -630,7 +630,7 @@ Los resultados ya ejecutados en el servidor pueden observase en la Figura ejerci
 
     column -s, -t ../results/contingency_popSex_ancestry_pct.csv
 
-El resultado puede observarse en la Figura ![Figura ejercicio7](ejercicio7_p2.png)
+El resultado puede observarse en la Figura ![Figura ejercicio7](imagen/ejercicio7_p2.png)
 ---
 
 ## Notas de reproducibilidad
