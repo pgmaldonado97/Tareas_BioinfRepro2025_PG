@@ -239,12 +239,4 @@ El resultado obtenido fue de **70,534 SNPs** retenidos después del filtro.
 En pasos previos del pipeline ya habíamos eliminado a los individuos con parentescos no deseados (pihat ≥ 0.2), lo que asegura que la muestra final no incluye individuos estrechamente relacionados.  
 Por esta razón no fue necesario aplicar un nuevo filtro en esta etapa, ya que el dataset que se usará en ADMIXTURE ya cumple con esta condición.
 
----
-
-## Archivos generados
-
-- `MDS_Comp2_vs_Comp3.png`
-- `MDS_Comp3_vs_Comp4.png`
-- `MDS_pairs.R`
-- `README.md` (este archivo)
 
