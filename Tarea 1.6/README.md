@@ -1,4 +1,4 @@
-# Tarea de Bioinformática 1.6
+# Tarea 1.6
 
 **Análisis de Admixture y estructura poblacional – Proyectos 1 a 4**
 
