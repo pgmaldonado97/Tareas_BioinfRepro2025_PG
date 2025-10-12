@@ -19,7 +19,7 @@ Se calculó la deriva genética compartida entre los targets modernos (*GBR.DG, 
 
  Datos obtenidos de f3
 
- ![Resultados f3 – Proyecto 1](projecto1_imagen1.png)
+ ![Resultados f3 – Proyecto 1](imagenes/projecto1_imagen1.png)
 
 
 Los valores del estadístico outgroup-f3(Mbuti; Target, Source) fueron todos positivos y altamente significativos (Z > 100), indicando una amplia deriva genética compartida entre las poblaciones europeas y las tres fuentes ancestrales evaluadas.
@@ -33,7 +33,7 @@ Para la elección de poblaciones f3
 Criterio f2 para elegir poblaciones en outgroup-f3
 Usamos Mbuti.DG como outgroup (pop1) porque su f2 frente a europeos y fuentes ancestrales es alto y homogéneo, lo que ancla el árbol y evita sesgos. Definimos como targets (pop2) a GBR.DG, Greek_1.DG e Ireland_EN.SG, ya que son las poblaciones a contrastar; su f2 con las distintas fuentes es diferencial, lo que permite detectar deriva compartida específica. Como fuentes (pop3) usamos Barcin Neolítico, Yamnaya de la estepa y Mesolítico europeo, porque entre sí presentan f2 altos (linajes bien separados) y capturan el modelo de tres componentes propuesto para Europa.
 
-![Resultados 2 – Proyecto 1](projecto1_imagen2.png)
+![Resultados 2 – Proyecto 1](imagenes/projecto1_imagen2.png)
 
 Interpretacion:
 
@@ -52,7 +52,7 @@ Este patrón implica una mayor afinidad genética relativa de GBR.DG hacia el co
 
 How many ancestry streams are needed
 
-![Resultados 2 – Proyecto 1](projecto1_imagen3.png)
+![Resultados 2 – Proyecto 1](imagenes/projecto1_imagen3.png)
 
 El análisis qpWave tuvo como objetivo determinar cuántas corrientes de ascendencia independientes son necesarias para explicar las poblaciones europeas modernas y sus posibles fuentes ancestrales. En la tabla de resultados, los modelos con rank = 0 y rank = 1 mostraron valores de p muy bajos (p = 2.32×10⁻⁶¹ y p = 3.9×10⁻⁷, respectivamente), lo que indica que uno o ningún componente ancestral no es suficiente para describir la variación genética observada. En cambio, los modelos con rank = 2, 3 y 4 presentaron valores de p mayores a 0.05, siendo el modelo con rank = 2 (p = 0.57) el primero con un ajuste estadísticamente aceptable.
 
@@ -117,7 +117,7 @@ En conjunto, estos resultados confirman que las tres poblaciones de la estepa pu
 
 ## Proyecto 3:
 
-![Resultados 2 – Proyecto 1](proyecto3_imagen1.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto3_imagen1.png)
 
 En el análisis f3, todas las poblaciones americanas actuales (Pima, Mixe, Karitiana, Suruí, PEL) y la antigua USA_CA_SantaRosa_3000BP.AG mostraron valores positivos y altamente significativos (f3 entre 0.0806 y 0.0995, con Z-scores superiores a 120). Esto indica una fuerte deriva genética compartida entre los americanos y las fuentes ancestrales antiguas (Anzick, Ancient Beringian y Spirit Cave).
 
@@ -135,23 +135,23 @@ En la primera parte del análisis con qpWave, se evaluó cuántas corrientes de 
 
 Sin embargo, las poblaciones Karitiana y Suruí mostraron en los modelos estándar valores de p muy bajos (p = 0.00002297 y p = 0.00000709, respectivamente, para rank = 1), lo que sugiere que su variabilidad genética no puede explicarse completamente mediante los flujos de ascendencia representados por los modelos del poblamiento americano tradicional. Estos resultados apuntan a la posible existencia de una fuente adicional de ascendencia.
 
-![Resultados 2 – Proyecto 1](projecto3_imagen2.png)
+![Resultados 2 – Proyecto 1](imagenes/projecto3_imagen2.png)
 
 Por este motivo, se evaluó un modelo alternativo que incluyó al individuo India_GreatAndaman_100BP.SG como proxy de una posible ascendencia australasiana, hipótesis previamente sugerida para algunos grupos amazónicos del sur. En este modelo, los valores de p se mantuvieron bajos (p = 3.77e-2 para Karitiana y p = 1.19e-3 para Suruí*), sin alcanzar significancia estadística suficiente como para aceptar un modelo de una sola corriente de ascendencia (rank = 1). Esto indica que, aunque se observa una ligera mejora en el ajuste en comparación con el modelo original, no hay evidencia sólida de una contribución significativa de ascendencia australasiana en estas poblaciones.
 
 En conjunto, los resultados sugieren que la mayoría de las poblaciones americanas actuales pueden modelarse como descendientes de las principales oleadas de poblamiento americano, mientras que Karitiana y Suruí presentan una composición genética más compleja, aunque sin evidencia concluyente de una tercera fuente ancestral exógena.
 
-![Resultados 2 – Proyecto 1](proyecto3_imagen3.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto3_imagen3.png)
 
 Según los resultados previos de qpWave, las poblaciones Pima, Mixe y Santa Rosa pueden explicarse con solo dos fuentes principales de ascendencia (Anzick y Ancient Beringian), por lo que se modelaron con un esquema de 2 vías en qpAdm. En cambio, PEL y Suruí requieren tres corrientes de ascendencia, por lo que se aplicó un modelo de 3 vías (añadiendo Spirit Cave). Para Karitiana, el resultado fue intermedio (p marginal), por lo que se probaron ambos modelos para evaluar cuál describe mejor su composición genética.
 
 Por eso para el qpAdm realice los análisis tomando estas consideraciones:
 
-![Resultados 2 – Proyecto 1](proyecto3_imagen4.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto3_imagen4.png)
 
-![Resultados 2 – Proyecto 1](pryecto3_imagen5.png)
+![Resultados 2 – Proyecto 1](imagenes/pryecto3_imagen5.png)
 
-![Resultados 2 – Proyecto 1](proyecto3_imagen6.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto3_imagen6.png)
 
 En los modelos de 2 vías realizados con qpAdm, las poblaciones Pima, Mixe, Santa Rosa (3000 BP) y Karitiana fueron analizadas como una mezcla entre Anzick y Ancient Beringian, dos linajes principales del poblamiento temprano de América. Sin embargo, los valores de p muy bajos (p < 0.001) y los pesos negativos observados en varias de ellas indican que este modelo no logra explicar de forma adecuada la variación genética observada. Esto sugiere que, aunque dichas poblaciones presentan afinidad con ambos linajes, su historia demográfica no puede reducirse a una mezcla simple entre estas dos fuentes.
 
@@ -161,13 +161,13 @@ En conjunto, los análisis con qpAdm y qpWave indican que las poblaciones americ
 
 ## Proyecto 4
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen1.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen1.png)
 
 Los resultados de f3 mostraron que todas las poblaciones medievales ibéricas (Spain_Islamic, Spain_Medieval, Spain_NazariPeriod_Muslim, Spain_Islamic_Zira, Spain_Visigoth_Granada) comparten mayor deriva genética con el Neolítico ibérico (Spain_MLN.AG) que con el Magrebí (Morocco_EN_WGC.SG) o el Subsahariano (Yoruba.DG).
 
 Por lo tanto, ahora el objetivo del f4 es confirmar si esas diferencias son estadísticamente significativas, es decir, si los targets están efectivamente más cercanos a uno de los potenciales orígenes (ibérico o norteafricano).
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen2.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen2.png)
 
 En el análisis f4 se evaluó si las poblaciones medievales e islámicas de la Península Ibérica muestran mayor cercanía genética con el Neolítico ibérico (Spain_MLN.AG) o con el Neolítico del Magreb (Morocco_EN_WGC.SG), usando Ethiopia_4500BP.SG como outgroup.
 
@@ -178,7 +178,7 @@ En otras palabras, las poblaciones medievales e islámicas de la península comp
 
 Sin embargo, los valores positivos en Spain_Islamic.AG y Spain_Visigoth_Granada.AG sugieren una ligera tendencia hacia una mayor afinidad con el Neolítico ibérico, aunque sin alcanzar significancia estadística.
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen3.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen3.png)
 
 En el análisis qpWave se evaluó cuántas corrientes de ascendencia son necesarias para explicar la composición genética de las poblaciones ibéricas medievales e islámicas, considerando como posibles fuentes al Neolítico ibérico (Spain_MLN.AG) y al Neolítico del Magreb (Morocco_EN_WGC.SG).
 
@@ -191,10 +191,10 @@ Estos resultados son coherentes con un escenario de mezcla entre poblaciones loc
 ##Resultados 2 vias
 
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen4.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen4.png)
 
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen5.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen5.png)
 
 
 ##Resultados 3 vias
@@ -203,10 +203,10 @@ En el análisis de tres vías se incorporó una tercera fuente subsahariana (Yor
 En términos generales, las poblaciones ibéricas medievales analizadas (Spain_Islamic.AG, Spain_Islamic_Zira.AG, Spain_Medieval.AG, Spain_NazariPeriod_Muslim.AG y Spain_Visigoth_Granada.AG) se explican principalmente por una ascendencia ibérica local derivada del Neolítico, con una contribución magrebí leve o no significativa y sin evidencia sólida de aporte subsahariano.
 
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen6.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen6.png)
 
 
-![Resultados 2 – Proyecto 1](proyecto4_imagen7.png)
+![Resultados 2 – Proyecto 1](imagenes/proyecto4_imagen7.png)
 
 
 En conjunto, los resultados apoyan que la Península Ibérica presenta una historia genética formada por dos principales corrientes de ascendencia: una local, derivada del Neolítico ibérico, y otra del Magreb, que habría aumentado en ciertos momentos históricos debido a contactos y migraciones entre ambas regiones.
