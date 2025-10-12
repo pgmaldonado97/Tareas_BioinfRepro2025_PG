@@ -44,6 +44,19 @@ El repositorio incluye código reproducible, resultados y figuras organizados po
 📄 **[Ver informe de la Tarea 1.4](Tarea%201.4/README.md)**  
 📁 [Carpeta completa](Tarea%201.4/) · 🖼️ [Imágenes](Tarea%201.4/imagen/) · 🧩 [Scripts](Tarea%201.4/code/)
 
+### 📝 Tarea 1.5 - Unidad 2: Análisis genético de poblaciones 
+Esta tarea corresponde a la Sesion 2 Unidad 2 titulado Análisis genético de poblaciones
+En esta sesión trabajamos para introducir técnicas de el análisis de datos de genotipificación a nivel genómico para detectar estructura población    
+📄 [Ver informe de la Tarea 1.5](Tarea%201.5/00_Informe_Tarea_1.5.md)
+
+
+## 🧪 Tarea 1.6 – Análisis de Admixture (Proyectos 1–4)
+
+En esta sesión realizo cuatro análisis de genética poblacional usando **admixtools** (f3, f4, **qpWave** y **qpAdm**)
+
+**Informe completo:**  
+📄 [Ver informe de la Tarea 1.6](Tarea%201.6/README.md)
+
 
 ## Actualizaciones futuras
 
