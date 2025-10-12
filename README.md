@@ -47,7 +47,7 @@ El repositorio incluye código reproducible, resultados y figuras organizados po
 ### 📝 Tarea 1.5 - Unidad 2: Análisis genético de poblaciones 
 Esta tarea corresponde a la Sesion 2 Unidad 2 titulado Análisis genético de poblaciones
 En esta sesión trabajamos para introducir técnicas de el análisis de datos de genotipificación a nivel genómico para detectar estructura población    
-📄 [Ver informe de la Tarea 1.5](Tarea%201.5/00_Informe_Tarea_1.5.md)
+📄 [Ver informe de la Tarea 1.5](Tarea%201.5/README.md)
 
 
 ## 🧪 Tarea 1.6 – Análisis de Admixture (Proyectos 1–4)
