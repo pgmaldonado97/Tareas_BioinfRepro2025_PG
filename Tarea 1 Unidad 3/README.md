@@ -1,4 +1,4 @@
-**Tarea 1 Unidad 3: Control de calidad de lecturas NGS**
+# **Tarea 1 Unidad 3: Control de calidad de lecturas NGS**
 
 **Autora Pamela González Maldonado**
 
@@ -8,7 +8,7 @@
 
 ---
 
-**Parte 1**
+## **Parte 1**
 
 **Usando comandos Unix:**
 
@@ -132,16 +132,14 @@ En conjunto, las diferencias observadas entre ambas versiones del archivo muestr
 Para traducir el código utilice el siguiente comando para las secuencias crudas y podadas:
 
 ```bash
-zcat \~/181004_curso_calidad_datos_NGS/fastq_raw/S9_R1.fastq.gz \| sed -n '12p' \| cut -c1-10 \\
-```
+zcat \~/181004_curso_calidad_datos_NGS/fastq_raw/S9_R1.fastq.gz \| sed -n '12p' \| cut -c1-10 \\\| perl -ne 'chomp; @c=split //; print join(" ", map{ord($\_)-33} @c), "\\n"'
 
-\| perl -ne 'chomp; @c=split //; print join(" ", map{ord($\_)-33} @c), "\\n"'
+```
 
 ```bash
-zcat \~/181004_curso_calidad_datos_NGS/fastq_filter/S9_R1_filter.fastq.gz \| sed -n '12p' \| cut -c1-10 \\
-```
+zcat \~/181004_curso_calidad_datos_NGS/fastq_filter/S9_R1_filter.fastq.gz \| sed -n '12p' \| cut -c1-10 \\\| perl -ne 'chomp; @c=split //; print join(" ", map{ord($\_)-33} @c), "\\n"'
 
-\| perl -ne 'chomp; @c=split //; print join(" ", map{ord($\_)-33} @c), "\\n"'
+```
 
 Obteniendo lo siguiente en el análisis:
 
@@ -153,7 +151,7 @@ Los valores de calidad se expresan mediante la **escala Phred**, definida como *
 
 ---
 
-**Parte 2**
+## **Parte 2**
 
 **Genere un informe de calidad con FastQC para una muestra (cada estudiante una muestra distinta), para R1 y R2.**
 
@@ -163,19 +161,20 @@ Se realizó el informe de calidad señalado a continuación en la imagen:
 
 ---
 
-**Parte 3**
+## **Parte 3**
 
 Descargue los archivos HTML a su computados mediante sftp (puede usar cualquier cliente o la línea de comandos. Por ejemplo, ejecutando desde su computador local: scp bioinfo1@genoma.med.uchile.cl:ricardo/S3_R1_fastqc\* .
 
 Los archivos generados y descargados son los siguientes:
 
-S9_R1_fastqc
 
-S9_R2_fastqc
+- [S9_R1_fastqc](S9_R1_fastqc.html)
+- [S9_R2_fastqc](S9_R2_fastqc.html)
+
 
 ---
 
-**Parte 4,5 y 6**
+## **Parte 4,5 y 6**
 
 **Resumen de todos los cuestionamientos planetados en la tarea**
 
@@ -192,7 +191,7 @@ S9_R1_fastqc
 1. **Estadísticas básicas**  
    El archivo contiene **30.350 lecturas** con una longitud uniforme de **251 pb** y un contenido GC promedio del **45 %**, dentro del rango esperado para ADN humano. No se reportan secuencias de baja calidad, lo que refleja un proceso de secuenciación exitoso.
 
-> ![Figura](image/imagen8_unidad3.png)
+![Figura](image/imagen8_unidad3.png)
 
 2. **Calidad por posición (Per base sequence quality)**  
    Los valores **Phred** se mantienen altos a lo largo de toda la lectura (mayoritariamente **Q \> 30**), indicando una probabilidad de error inferior al 0.1 %. Solo se observa una leve disminución en las últimas posiciones (\~240–251 bp), pero la mayoría de las bases permanecen en la zona verde, lo que confirma una excelente calidad general.
@@ -207,12 +206,12 @@ S9_R1_fastqc
 4. **Contenido de bases (Per base sequence content)**  
    Las proporciones de A, T, G y C son estables a lo largo de la lectura, con ligeras variaciones al inicio, posiblemente debidas a sesgos de los cebadores o a la amplificación inicial. Estas fluctuaciones son normales y no afectan la calidad general.
 
-> ![Figura](image/imagen11_unidad3.png)
+> ![Figura](image/imagen17_unidad3.png)
 
 **5. Contenido GC (Per sequence GC content)**  
 La distribución del contenido GC presenta un pico centrado alrededor del **45 %**, con un ligero desplazamiento respecto a la curva teórica, lo que podría atribuirse a la complejidad biológica de la muestra o al sesgo de amplificación.
 
-![Figura](image/imagen17_unidad3.png)
+![Figura](image/imagen11_unidad3.png)
 
 **6. Secuencias sobre-representadas y contenido de adaptadores**  
 Se detectan algunas secuencias sobre-representadas en posiciones específicas, posiblemente correspondientes a fragmentos de adaptadores. Sin embargo, su frecuencia es baja y no compromete la calidad global del conjunto de datos.
