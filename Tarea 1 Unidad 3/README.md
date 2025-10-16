@@ -223,7 +223,7 @@ S9_R2_fastqc
 1. **Estadísticas básicas**  
    El archivo contiene **30.350 lecturas**, con una longitud uniforme de **251 pb** y un contenido GC promedio del **45 %**, igual que R1. No se reportan lecturas clasificadas como de mala calidad, lo que indica que el proceso de secuenciación fue exitoso.
 
-> ![Figura](imagen12_unidad3.png)
+> ![Figura](image/imagen12_unidad3.png)
 
 2. **Calidad por posición (Per base sequence quality)**  
    La calidad promedio se mantiene alta (Q \> 30) hasta aproximadamente la base 150, pero a partir de allí se observa una **disminución progresiva**, llegando a valores cercanos a **Q20–Q25** en el extremo final (\~230–250 bp). Esta caída es típica en las lecturas reversas (*R2*) debido al desgaste de los ciclos de secuenciación. Aun así, la mayor parte de las bases conserva una calidad aceptable para el análisis.
