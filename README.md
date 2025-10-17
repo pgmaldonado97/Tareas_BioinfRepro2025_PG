@@ -58,6 +58,17 @@ En esta sesión realizo cuatro análisis de genética poblacional usando **admix
 📄 [Ver informe de la Tarea 1.6](Tarea%201.6/README.md)
 
 
+### 📝  Tarea 1 – Unidad 3: Control de calidad de lecturas NGS
+
+En esta tarea corresponde a la primera sesion de la Unidad 3 donde se evaluó la calidad de lecturas **crudas y podadas** (trimming) para la muestra **S9** usando **Unix** y **FastQC**.  
+
+ 📄 **Ver informe de la Tarea 1 – Unidad 3:**  
+ [Ver informe de la Tarea 1 – Unidad 3](Tarea%201%20Unidad%203/)
+
+
+
+
+
 ## Actualizaciones futuras
 
 A medida que avance el curso, este repositorio se irá actualizando con nuevas tareas e informes organizados por sesiones.  
