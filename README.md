@@ -52,7 +52,7 @@ En esta sesión trabajamos para introducir técnicas de el análisis de datos de
 
 ## 🧪 Tarea 1.6 – Análisis de Admixture (Proyectos 1–4)
 
-En esta sesión realizo cuatro análisis de genética poblacional usando **admixtools** (f3, f4, **qpWave** y **qpAdm**)
+Esta Tarea corresponde a la Tarea 2 de la Unidad 2 y en esta sesión realizo cuatro análisis de genética poblacional usando **admixtools** (f3, f4, **qpWave** y **qpAdm**)
 
 **Informe completo:**  
 📄 [Ver informe de la Tarea 1.6](Tarea%201.6/README.md)
