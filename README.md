@@ -33,7 +33,7 @@ En esta sesión aprendimos a **organizar proyectos bioinformáticos** en carpeta
 ### 📝 Unidad 1 Sesion 1.3 - Sesión 3: Introducción a R con un enfoque bioinformático  
 En esta sesión trabajamos con **R y RStudio**, explorando estructuras de datos, bucles `for`, funciones personalizadas y un análisis de aislamiento por resistencia.  
 El informe también incluye ejercicios desarrollados en **R Markdown**.  
-📄 [Ver informe de la Tarea 1.3](Tarea%201.3/00_Informe_Tarea_1.3.md)
+📄 [Ver informe de la Tarea 1.3](./Unidad%201%20Sesion%201.3/00_Informe_Tarea_1.3.md)
 
 ---
 ### 🧬 Unidad 2 Sesion 2.1: Análisis de VCF y PLINK
@@ -41,13 +41,13 @@ El informe también incluye ejercicios desarrollados en **R Markdown**.
 En esta sesión trabajamos con **VCF** y **PLINK** para realizar filtros de **MAF** y **missingness**, test de **Hardy–Weinberg**, verificación/estimación de **sexo** y una tabla de contingencia **Sexo × Ancestría**.  
 El repositorio incluye código reproducible, resultados y figuras organizados por carpetas.
 
-📄 **[Ver informe de la Tarea 1.4](Tarea%201.4/README.md)**  
+📄 **[Ver informe de la Tarea 1.4](./Unidad%202%20Sesion%202.1/README.md)**  
 📁 [Carpeta completa](Tarea%201.4/) · 🖼️ [Imágenes](Tarea%201.4/imagen/) · 🧩 [Scripts](Tarea%201.4/code/)
 
 ### 📝 Unidad 2 Sesion 2.2: Análisis genético de poblaciones 
 Esta tarea corresponde a la Sesion 2 Unidad 2 titulado Análisis genético de poblaciones
 En esta sesión trabajamos para introducir técnicas de el análisis de datos de genotipificación a nivel genómico para detectar estructura población    
-📄 [Ver informe de la Tarea 1.5](Tarea%201.5/README.md)
+📄 [Ver informe de la Tarea 1.5](./Unidad%202%20Sesion%202.2/README.md)
 
 
 ## 🧪 Unidad 2 Sesion 3 – Análisis de Admixture (Proyectos 1–4)
@@ -55,7 +55,7 @@ En esta sesión trabajamos para introducir técnicas de el análisis de datos de
 Esta Tarea corresponde a la Tarea 2 de la Unidad 2 y en esta sesión realizo cuatro análisis de genética poblacional usando **admixtools** (f3, f4, **qpWave** y **qpAdm**)
 
 **Informe completo:**  
-📄 [Ver informe de la Tarea 1.6](Tarea%201.6/README.md)
+📄 [Ver informe de la Tarea 1.6](./Unidad%202%20Sesion%203/README.md)
 
 
 ### 📝  Unidad 3 Sesion 1: Control de calidad de lecturas NGS
@@ -63,7 +63,7 @@ Esta Tarea corresponde a la Tarea 2 de la Unidad 2 y en esta sesión realizo cua
 En esta tarea corresponde a la primera sesion de la Unidad 3 donde se evaluó la calidad de lecturas **crudas y podadas** (trimming) para la muestra **S9** usando **Unix** y **FastQC**.  
 
  📄 **Ver informe de la Tarea 1 – Unidad 3:**  
- [Ver informe de la Tarea 1 – Unidad 3](Tarea%201%20Unidad%203/)
+ [Ver informe de la Tarea 1 – Unidad 3](./Unidad%203%20Sesion%201/README.md)
 
 
 
