@@ -26,7 +26,7 @@ El repositorio del curso de referencia, desde el cual se clonaron los materiales
 
 ### 📝 Unidad 1 Sesion 1.2 - Sesión 2: Organización de un proyecto bioinformático  
 En esta sesión aprendimos a **organizar proyectos bioinformáticos** en carpetas, versionar los archivos con Git y documentar en Markdown.  
-📄 [Ver informe de la Tarea 1.2](Tarea%201.2/00_Informe_Tarea_1.2_Explicacion.md)
+📄 [Ver informe de la Tarea 1.2](Unidad 1 Sesion 1.2/00_Informe_Tarea_1.2_Explicacion.md)
 
 ---
 
