@@ -1,4 +1,4 @@
-# **Tarea 1 Unidad 3: Control de calidad de lecturas NGS**
+# **Unidad 3 Sesion 1: Control de calidad de lecturas NGS**
 
 **Autora Pamela González Maldonado**
 
