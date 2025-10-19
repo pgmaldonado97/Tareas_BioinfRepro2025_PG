@@ -1,4 +1,4 @@
-# Tarea 1.4 — Informe
+# Unidad 2 Sesion 2.1 — Informe
 
 Este informe corresponde a la Unidad 2 Sesion 1 Titulado Genética de poblaciones con software especializado
 
