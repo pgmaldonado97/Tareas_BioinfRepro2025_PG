@@ -1,4 +1,4 @@
-# INFORME TAREA 2
+# INFORME UNIDAD 1 SESION 1.2
 # Informe Tarea 1.2
 
 Este informe documenta los pasos realizados en la Tarea 1.2 del curso de Bioinformática y Proyecto de Investigación. Incluye la práctica inicial en MarkText, así como las evidencias del uso de Git y la verificación de los cambios realizados.
