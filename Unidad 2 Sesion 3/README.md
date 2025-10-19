@@ -1,4 +1,4 @@
-# Tarea 1.6
+# Unidad 2 Sseion 3
 
 **Análisis de Admixture y estructura poblacional – Proyectos 1 a 4**
 
