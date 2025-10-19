@@ -1,4 +1,4 @@
-# Tarea 1.5 
+# Unidad 2 Sesion 2.2
 
 Esta tarea corresponde a la Sesion 2 Unidad 2 titulado **Análisis genético de poblaciones**
 
