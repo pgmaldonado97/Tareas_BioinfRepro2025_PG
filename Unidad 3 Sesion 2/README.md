@@ -14,7 +14,7 @@ Esta tarea corresponde a la clase de cBioPortal para analizar datos genómicos d
 - **Paper asociado a la publicación:**  
   Pereira B, Chin SF, Rueda OM, Vollan HK, Provenzano E, Bardwell HA, Pugh M, Jones L, Russell R, Sammut SJ, Tsui DW, Liu B, Dawson SJ, Abraham J, Northen H, Peden JF, Mukherjee A, Turashvili G, Green AR, McKinney S, Oloumi A, Shah S, Rosenfeld N, Murphy L, Bentley DR, Ellis IO, Purushotham A, Pinder SE, Børresen-Dale AL, Earl HM, Pharoah PD, Ross MT, Aparicio S, Caldas C. *The somatic mutation profiles of 2,433 breast cancers refines their genomic and transcriptomic landscapes.* **Nat Commun.** 2016 May 10;7:11479. doi: 10.1038/ncomms11479. PMID: 27161491; PMCID: PMC4866047.
 
-   ![Gráfico tipo de mutaciones](imagenes/portada.png)
+   ![Gráfico tipo de mutaciones](./imagenes/portada.png)
 
 ---
 
@@ -35,7 +35,7 @@ Es por ello que este estudio, que abarca una gran cantidad de pacientes y con da
 
 Se visualizan los **5 genes con mayor frecuencia de mutación**.
 
-![Gráfico tipo de mutaciones](imagenes/imagen1.png)
+![Gráfico tipo de mutaciones](./imagenes/imagen1.png)
 
 - El **gen seleccionado** fue el de mayor frecuencia en la población: **PIK3CA**.  
 
@@ -47,14 +47,14 @@ Se visualizan los **5 genes con mayor frecuencia de mutación**.
 - **¿Qué tipo de mutación es más frecuente (missense, nonsense, frameshift)?**  
   Para la mutación más frecuente tenemos lo siguiente:
 
-  ![Gráfico tipo de mutaciones](imagenes/imagen2.png)
+  ![Gráfico tipo de mutaciones](./imagenes/imagen2.png)
 
   Siendo la mutación más abundante la **Missense Mutation**.
 
 - **¿Qué vías de señalización aparecen alteradas en la pestaña Pathways?**  
   La vía de señalización más alterada es la de **PI3K**, como se puede observar en la siguiente imagen:
 
-  ![Vías de señalización alteradas](imagenes/imagen3.png)
+  ![Vías de señalización alteradas](./imagenes/imagen3.png)
 
   También aparecen otras vías que podrían verse afectadas, que se muestran en la imagen anterior.
 
@@ -62,7 +62,7 @@ Se visualizan los **5 genes con mayor frecuencia de mutación**.
 
 ## **Parte 3: Análisis clínico**
 
-![Imagen Clinical Data del estudio](imagenes/clinica.png)
+![Imagen Clinical Data del estudio](./imagenes/clinica.png)
 
 ### **Examina las variables demográficas:**
 
@@ -72,7 +72,7 @@ Se visualizan los **5 genes con mayor frecuencia de mutación**.
 - **Distribución por edad:**  
   Para la distribución por edad generé el siguiente gráfico:
 
-  ![Distribución por edad](imagenes/imagen4.png)
+  ![Distribución por edad](./imagenes/imagen4.png)
 
   Donde se muestra que los pacientes estuvieron entre **21 y 90 años**.
 
