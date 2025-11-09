@@ -72,7 +72,7 @@ En esta tarea corresponde a la primera sesion de la Unidad 3 donde se evaluó la
 En esta sesión se seleccionó un estudio de cBioPortal, se descargaron datos genómicos reales de pacientes y se analizaron mutaciones y alteraciones estructurales en diferentes tipos de cáncer.  
 
 📄 **Informe completo:**  
-🔗 [Ver informe de la Tarea Unidad 3 Sesión 2](./Unidad%203%20Sesion%202README.md)
+🔗 [Ver informe de la Tarea Unidad 3 Sesión 2](./Unidad%203%20Sesion%202/README.md)
 
 ---
 ### 🧪 Unidad 3 Sesión 3 – Alineamiento y análisis de variantes (NGS)
