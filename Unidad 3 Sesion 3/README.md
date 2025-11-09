@@ -39,7 +39,7 @@ awk 'BEGIN{FS="\t"} $1!~/^@/ && $6 ~ /S/ {print NR, $1, $6; exit}' S9.sam
 
 El resultado obtenido puede observarse en la siguiente figura:
 
-![Primera lectura con soft-clipping](softclipping_busqueda.png)
+![Primera lectura con soft-clipping](imagenes/pregunta2_secuencia)
 
 Esto indica que la primera lectura con bases enmascaradas se encuentra en la **línea 72** del archivo SAM, con **9 bases suavizadas (soft-clipped)** al inicio (extremo 5’) de la lectura.
 
@@ -55,7 +55,7 @@ grep "M03564:2:000000000-D29D3:1:1101:18188:1658" S9.sam
 
 El resultado se observa en la imagen:
 
-![Registro de la lectura con CIGAR](registro_lectura_cigar.png)
+![Registro de la lectura con CIGAR](imagenes/pregunta3_secuencia)
 
 El resultado mostró dos líneas correspondientes al mismo fragmento, ya que las lecturas R1 y R2 están apareadas. Cada línea del archivo SAM contiene distintos campos que describen el alineamiento. El campo QNAME corresponde al nombre de la lectura, que en este caso es M03564:2:000000000-D29D3:1:1101:18188:1658. El campo FLAG indica el estado de la lectura: el valor 99 en la primera línea y 147 en la segunda señalan que ambas lecturas forman un par correctamente alineado, una en orientación directa y la otra en inversa. El campo RNAME especifica el cromosoma al que se alineó la lectura, siendo chr4 en ambos casos, mientras que POS indica la posición de inicio del alineamiento, con valores 5559467 y 5559478, respectivamente.
 
@@ -82,25 +82,25 @@ Se seleccionaron cuatro figuras del reporte de Qualimap consideradas las más in
 
 El histograma de cobertura (Figura 1) muestra la distribución del número de bases del genoma en función de la profundidad de secuenciación. Se observa una distribución heterogénea de la cobertura, con un grupo de regiones con cobertura baja (0–5X) y un segundo grupo predominante concentrado entre aproximadamente 60X y 120X, donde se alcanza el máximo de lecturas acumuladas. Este patrón sugiere que la mayoría de las regiones fueron secuenciadas con una profundidad adecuada para un alineamiento confiable, aunque la presencia de un pico en cobertura baja (<5X) indica que existen zonas del genoma con representación insuficiente o sin lecturas mapeadas. Una cobertura media dentro del rango observado (60–120X) es indicativa de buena calidad de secuenciación, mientras que las regiones con cobertura nula podrían corresponder a sectores difíciles de mapear o con contenido repetitivo. En conclusión, el alineamiento muestra una cobertura general adecuada, pero con cierto grado de desigualdad que podría reflejar regiones genómicas con baja complejidad o sesgos de amplificación.
 
-![Figura 1 - Histograma de cobertura](figura1_cobertura.png)
+![Figura 1 - Histograma de cobertura](imagenes/pregunta5_histograma)
 
 Figura 1. Histograma de cobertura que muestra la distribución del número de bases del genoma en función de la profundidad de secuenciación (X).
 
 El histograma de calidad de mapeo (Figura 2) refleja la distribución de las puntuaciones de confianza con que el alineador asignó cada lectura a una posición del genoma de referencia. En la muestra S9_sorted_RG.bam se observa un solo pico concentrado en el valor máximo de 60, lo que indica que la mayoría de las lecturas se alinearon de forma única y sin ambigüedad. En el sistema de puntuación utilizado por el alineador BWA-MEM, una calidad de mapeo cercana a 60 corresponde a una probabilidad de error de alineamiento inferior a 1 en un millón, por lo que se considera óptima. Esto significa que casi todas las lecturas se ubicaron en la posición correcta del genoma y que el alineamiento tiene una alta fiabilidad, sin señales de lecturas mal mapeadas o repetitivas.
 
-![Figura 2 - Calidad de mapeo](figura2_calidad_mapeo.png)
+![Figura 2 - Calidad de mapeo](imagenes/pregunta5_2)
 
 Figura 2. Histograma de calidad de mapeo que representa la distribución de las puntuaciones asignadas a las lecturas alineadas según su confiabilidad.
 
 La distribución del contenido GC de las lecturas mapeadas (Figura 3) muestra un pico principal entre 35 % y 40 % de GC, que coincide con el rango esperado para el genoma humano. Este resultado indica que no existen sesgos significativos en la composición de bases de las lecturas. Una distribución simétrica y centrada en valores intermedios de GC, como la observada, sugiere que el proceso de secuenciación y la preparación de la librería fueron adecuados y que no hubo una sobre o sub-representación de regiones con contenido GC extremo. Por el contrario, si la curva estuviera desplazada hacia valores muy altos o muy bajos, indicaría sesgos técnicos o pérdida de regiones específicas. En este caso, la forma regular de la distribución confirma la uniformidad y representatividad de las lecturas mapeadas, lo cual respalda la calidad general del alineamiento.
 
-![Figura 3 - Distribución GC](figura3_gc.png)
+![Figura 3 - Distribución GC](imagenes/pregunta5_3)
 
 Figura 3. Distribución del contenido de GC en las lecturas mapeadas, expresada como porcentaje de guanina-citosina en relación con el número de lecturas.
 
 El histograma de tasa de duplicación (Figura 4) muestra la proporción de lecturas repetidas dentro del conjunto alineado. En la muestra S9_sorted_RG.bam, la mayoría de las lecturas se agrupan en valores de duplicación muy bajos (entre 1 % y 5 %), con una caída rápida hacia valores mayores. Esto indica que el nivel de redundancia en los datos es mínimo y que la mayoría de las lecturas son únicas. Un bajo porcentaje de duplicación es un indicador positivo, ya que significa que el proceso de secuenciación y la preparación de la librería no generaron un exceso de copias idénticas de las mismas moléculas de ADN. En cambio, si existieran picos altos en duplicaciones mayores al 20 %, sugerirían una sobreamplificación o un sesgo técnico durante la PCR. En este caso, el resultado confirma una alta complejidad y representatividad del conjunto de lecturas, garantizando que los datos sean informativos y no redundantes para los análisis posteriores.
 
-![Figura 4 - Duplicación](figura4_duplicacion.png)
+![Figura 4 - Duplicación](pregunta5_4)
 
 Figura 4. Histograma de tasa de duplicación que representa el porcentaje de lecturas redundantes dentro del conjunto alineado.
 
@@ -191,7 +191,7 @@ grep -v "^#" S9_FILTERED_SNP_2FILTROS.chr19.vcf | grep -v "PASS" | wc -l
 
 Los resultados pueden observarse en la siguiente imagen:
 
-![Conteo de variantes filtradas](conteo_variantes_dp_qual.png)
+![Conteo de variantes filtradas](pregunta4_alineamiento)
 
 Estos resultados reflejan que la muestra S9 presenta lecturas confiables y bien soportadas, y que los parámetros utilizados en la secuenciación y el alineamiento fueron adecuados para obtener llamadas de variantes robustas y de alta calidad.
 
@@ -264,7 +264,7 @@ grep -v "^#" S9_FILTERED_SNP_2FILTROS.chr19.vcf | head
 Este comando muestra las primeras líneas del archivo con las posiciones de las variantes detectadas.  
 Entre ellas, se eligió una que presentaba buena calidad (QUAL > 30), profundidad adecuada (DP > 10) y que correspondía al gen **JAK3**, el cual podía visualizarse claramente en el track de genes en IGV.
 
-![Visualización IGV - variante en JAK3](NOMBRE_DE_LA_IMAGEN.png)`
+![Visualización IGV - variante en JAK3](imagenes/pregunta8_alineamiento)
 
 En la vista de IGV (Figura 1), se observa una sustitución **A>G** dentro del gen *JAK3*, con buena profundidad de lectura (~125 lecturas) y presencia de ambas bases, indicando heterocigosidad.
 
@@ -299,7 +299,7 @@ Se realizó la anotación funcional de las variantes identificadas utilizando la
 
 Se incluyeron las anotaciones de Significancia clínica (CLIN_SIG) y los puntajes CADD, y el archivo de resultados se descargó en formato TXT. El cual esta nombrado como resultados VEP.
 
-![Pantallazo ejecución VEP](NOMBRE_DE_LA_IMAGEN.png)`
+![Pantallazo ejecución VEP](vep_resultados)
 
 Posteriormente, el archivo fue procesado en RStudio, donde se aplicó un filtrado para conservar únicamente aquellas variantes con valor distinto a “benign” en la columna CLIN_SIG o con un puntaje CADD_PHRED mayor a 20.
 
@@ -309,7 +309,7 @@ Los genes afectados incluyen **CEBPA, CEBPA-AS1, AC008783.1 y CTD-2540B15.7/9**,
 
 El gen **CEBPA (CCAAT Enhancer Binding Protein Alpha)** codifica un factor de transcripción clave en la diferenciación mieloide, y su alteración se ha asociado con neoplasias hematológicas, por lo que las variantes encontradas podrían tener relevancia biológica y merecen evaluación adicional.
 
-![Tabla variantes filtradas VEP](NOMBRE_TABLA_VEP.png)`
+![Tabla variantes filtradas VEP](final_pregunta)
 
 Las variantes identificadas se encuentran en regiones cercanas o dentro de genes relevantes para la regulación de la expresión génica.
 
