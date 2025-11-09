@@ -65,6 +65,24 @@ En esta tarea corresponde a la primera sesion de la Unidad 3 donde se evaluó la
  📄 **Ver informe de la Tarea 1 – Unidad 3:**  
  [Ver informe de la Tarea 1 – Unidad 3](./Unidad%203%20Sesion%201/README.md)
 
+ ---
+
+### 🧬 Unidad 3 Sesión 2 – Análisis de datos genómicos de cáncer usando cBioPortal
+
+En esta sesión se seleccionó un estudio de cBioPortal, se descargaron datos genómicos reales de pacientes y se analizaron mutaciones y alteraciones estructurales en diferentes tipos de cáncer.  
+
+📄 **Informe completo:**  
+🔗 [Ver informe de la Tarea Unidad 3 Sesión 2](./Unidad%203%20Sesion%202README.md)
+
+---
+### 🧪 Unidad 3 Sesión 3 – Alineamiento y análisis de variantes (NGS)
+
+En esta sesión se realizó el alineamiento de las lecturas FASTQ al genoma de referencia humano (hg19), se generó el archivo BAM ordenado y marcado con read groups, y posteriormente se detectaron variantes mediante GATK. Finalmente, se visualizó una variante en IGV.
+
+📄 **Informe completo:**  
+🔗 [Ver informe de la Tarea Unidad 3 Sesión 2](./Unidad%203%20Sesion%203/README.md)
+
+
 
 
 
