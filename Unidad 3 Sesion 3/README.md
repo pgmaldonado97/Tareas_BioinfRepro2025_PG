@@ -69,7 +69,7 @@ El control de calidad del alineamiento se realizó con la herramienta **Qualimap
 
 El reporte completo se encuentra disponible en el repositorio de GitHub en el siguiente enlace:
 
-👉 [🔍 Abrir reporte de Qualimap](Unidad%203%20Sesion%203/Anexos/S9_qualimap_report/S9_sorted_RG_report/qualimapReport.html)
+👉 [🔍 Abrir reporte de Qualimap](Anexos/S9_qualimap_report/S9_sorted_RG_report/qualimapReport.html)
 
 ### 5. Seleccionar 4 figuras que a su juicio sean las más informativas sobre la calidad de los datos y del ensamble.
 ### 6. Incluir las figuras en la sección de Resultados de un reporte técnico. Describir cada figura con una leyenda descriptiva. Adicionalmente, en el texto de la sección, interpretar los resultados y citar cada figura. Debe referirse a la calidad de los datos y del alineamiento. Enfóquese especialmente en los posibles problemas con los datos o alineamientos. Comente potenciales razones que expliquen lo observado. Incluya una sección con las principales Conclusiones para la muestra.
