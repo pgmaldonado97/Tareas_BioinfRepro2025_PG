@@ -80,7 +80,7 @@ En esta sesión se seleccionó un estudio de cBioPortal, se descargaron datos ge
 En esta sesión se realizó el alineamiento de las lecturas FASTQ al genoma de referencia humano (hg19), se generó el archivo BAM ordenado y marcado con read groups, y posteriormente se detectaron variantes mediante GATK. Finalmente, se visualizó una variante en IGV.
 
 📄 **Informe completo:**  
-🔗 [Ver informe de la Tarea Unidad 3 Sesión 2](./Unidad%203%20Sesion%203/README.md)
+🔗 [Ver informe de la Tarea Unidad 3 Sesión 3](./Unidad%203%20Sesion%203/README.md)
 
 
 
