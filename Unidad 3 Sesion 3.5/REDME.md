@@ -58,5 +58,51 @@ A partir de esta variante, realicé una búsqueda en bases de datos clínicas qu
 
 ## Tutorial 2 – Encontrar variantes accionables con los paneles QIAseq
 
-*(A completar una vez resuelto el problema de licencia.)*
+*(No se pudo completar por el problema de licencia.)*
+
+Siguiendo las recomendaciones del proveedor trate de correr el programa pero lastimosamente me genero un archivo que no tenia contenido que se observan en la siguiente imagen:
+
+![Figura 6](imagenes/imagen06.png)
+
+Sin embargo, de igual manera incluyo una interpretación de lo que se esperaba obtener en base al documento que nos facilitaron en el tutorial.
+
+En el caso del Panel QIAseq BRCA1/BRCA2 (DHS-102Z), el análisis habría incluido:
+
+1. **Identificación automática de variantes**  
+   El pipeline debía detectar variantes germinales o somáticas presentes en los genes **BRCA1** y **BRCA2**, incluyendo SNVs, indels y posibles variantes accionables clínicamente. El archivo esperado habría mostrado una lista tabulada con la información esencial de cada variante: posición genómica, tipo de variante, cambio de nucleótido, profundidad de lectura, frecuencia alélica y zigosidad.
+
+2. **Anotación funcional y clínica**  
+   Cada variante debía ser anotada mediante herramientas que integran bases de datos como:
+   - **ClinVar**
+   - **COSMIC**
+   - **dbSNP**
+   - **gnomAD**
+   - Predictores funcionales computacionales (SIFT, PolyPhen, etc.)
+
+   Esto habría permitido clasificar las variantes según las guías **AMP/ASCO/CAP**, por ejemplo:
+   - Patogénica  
+   - Probablemente patogénica  
+   - De significado incierto (VUS)  
+   - Benigna o probablemente benigna  
+
+3. **Reporte de variantes accionables**  
+   El workflow debía destacar específicamente:
+   - Variantes conocidas asociadas con riesgo hereditario de cáncer de mama/ovario.  
+   - Variantes que podrían influir en decisiones clínicas como vigilancia, prevención o terapias dirigidas (por ejemplo, sensibilidad a inhibidores PARP).
+
+4. **Visualización en Genome Browser**  
+   El tutorial indicaba que el resultado debía incluir una carpeta con:
+   - Archivos "Read Mapping"  
+   - Tracks de cobertura  
+   - Tracks de variantes identificadas  
+   - Visualización alineada contra el genoma de referencia para verificar manualmente la calidad de las variantes.
+
+5. **Generación del Reporte QIAseq**  
+   Finalmente, el asistente debía producir un reporte resumido con:
+   - Número total de variantes detectadas  
+   - Variantes relevantes clínica o funcionalmente  
+   - Estadísticas de rendimiento (profundidad, cobertura uniforme, regiones con baja cobertura)  
+
+En conjunto, el análisis habría permitido no solo identificar variantes sino también evaluar su posible impacto biológico y clínico, entregando un reporte listo para la interpretación biomédica según estándares actuales.
+
 
