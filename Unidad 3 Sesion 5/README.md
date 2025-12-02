@@ -62,7 +62,88 @@ Estos representan las lecturas pareadas (paired-end) derivadas de la secuenciaci
 
 ### **3. Ejecución del análisis germinal**
 
-Se utilizó el script **sarek_germinal.sh**, basado en el modelo entregado y adaptado para la muestra S9.
+Se utilizó el script **sarek_germinal.sh**, basado en el modelo entregado y adaptado para la muestra S9. Que puede encontrarse dentro de la carpeta code pero cuyo script tambien se detalla a continuación:
+
+```
+#!/bin/bash
+# Ejecuta nf-core/sarek en modo GERMINAL para la muestra S9.
+# Basado en el script guía entregado por la profesora.
+# El script crea internamente un samplesheet CSV como requiere nf-core/sarek
+# y luego llama a:
+#   nextflow run nf-core/sarek --input samplesheet.csv ...
+
+###############################
+# Definir entradas para S9    #
+###############################
+
+# Rutas a los FASTQ crudos de la muestra S9
+R1="/home/bioinfo1/181004_curso_calidad_datos_NGS/fastq_raw/S9_R1.fastq.gz"
+R2="/home/bioinfo1/181004_curso_calidad_datos_NGS/fastq_raw/S9_R2.fastq.gz"
+
+# Directorio de salida (desde la carpeta code/)
+OUT="../results/germinal_S9"
+
+# Crear el directorio de salida
+mkdir -p "$OUT"
+
+############################################
+# Detección automática del nombre (S9)     #
+############################################
+
+# Tomamos el nombre del archivo R1 y le quitamos sufijos, igual que en el script original
+base=$(basename "$R1")
+
+# Elimina sufijos comunes de R1 (NO se reemplaza por S9, solo limpia el nombre)
+sample=${base%%_R1.fastq.gz}
+sample=${sample%%_R1.fq.gz}
+sample=${sample%%_1.fastq.gz}
+sample=${sample%%_1.fq.gz}
+sample=${sample%%.fastq.gz}
+sample=${sample%%.fq.gz}
+
+SAMPLE=$sample
+echo "Detectado nombre de muestra automáticamente: ${SAMPLE}"
+
+############################################
+# Obtener rutas absolutas de los FASTQ     #
+############################################
+
+if command -v readlink >/dev/null 2>&1; then
+    R1_ABS=$(readlink -f "$R1")
+    R2_ABS=$(readlink -f "$R2")
+else
+    R1_ABS="$R1"
+    R2_ABS="$R2"
+fi
+
+############################################
+# Crear el samplesheet CSV para Sarek      #
+############################################
+
+SHEET="${OUT}/samplesheet_germline_${SAMPLE}.csv"
+
+echo "Creando samplesheet: $SHEET"
+cat > "$SHEET" <<EOF
+patient,sex,status,sample,lane,fastq_1,fastq_2
+${SAMPLE},NA,0,${SAMPLE},L1,${R1_ABS},${R2_ABS}
+EOF
+
+############################################
+# Ejecutar nf-core/sarek en modo germinal  #
+############################################
+
+echo "Lanzando nf-core/sarek en modo germinal para ${SAMPLE}..."
+nextflow run nf-core/sarek \
+    --input "$SHEET" \
+    --genome GATK.GRCh38 \
+    --outdir "$OUT" \
+    --tools haplotypecaller \
+    -profile singularity \
+    -c /home/bioinfo1/korostica/test_tutorial/code/local_sarek_8cpus.config \
+    -resume
+
+
+```
 
 Comando ejecutado:
 
@@ -76,11 +157,89 @@ Esto generó:
 - Reportes de calidad (FastQC, BAM metrics, MultiQC).
 - Archivos intermedios de alineamiento, recalibración y marcaje de duplicados.
 
+Todos ubicados dentro de la carpeta results en este mismo repositorio.
+
 ---
 
 ### **4. Ejecución del análisis somático**
 
-Se utilizó el script **sarek_somatic.sh**, que ejecuta Mutect2 en modo tumor-only.Al igual que el germinal, este script llama al pipeline indicando los FASTQ, la referencia genómica y el directorio de resultados.
+Se utilizó el script **sarek_somatic.sh**, que ejecuta Mutect2 en modo tumor-only.Al igual que el germinal, este script llama al pipeline indicando los FASTQ, la referencia genómica y el directorio de resultados. El cual se detalla a conitnuación y tambien se encuentra en la carpeta code de este repositorio:
+
+```#!/bin/bash
+# Ejecuta nf-core/sarek en modo SOMÁTICO (tumor-only) para la muestra S9.
+# Basado en el script guía entregado por la profesora.
+# El script crea internamente un samplesheet CSV como requiere nf-core/sarek.
+
+###############################
+# Definir entradas para S9    #
+###############################
+
+# Rutas a los FASTQ crudos de la muestra S9
+R1="/home/bioinfo1/181004_curso_calidad_datos_NGS/fastq_raw/S9_R1.fastq.gz"
+R2="/home/bioinfo1/181004_curso_calidad_datos_NGS/fastq_raw/S9_R2.fastq.gz"
+
+# Directorio de salida (desde la carpeta code/)
+OUT="../results/somatic_S9"
+
+# Crear el directorio de salida
+mkdir -p "$OUT"
+
+############################################
+# Detección automática del nombre (S9)     #
+############################################
+
+base=$(basename "$R1")
+
+# Elimina sufijos comunes de R1 (igual que en el script original)
+sample=${base%%_R1.fastq.gz}
+sample=${sample%%_R1.fq.gz}
+sample=${sample%%_1.fastq.gz}
+sample=${sample%%_1.fq.gz}
+sample=${sample%%.fastq.gz}
+sample=${sample%%.fq.gz}
+
+SAMPLE=$sample
+echo "Detectado nombre de muestra automáticamente: ${SAMPLE}"
+
+############################################
+# Rutas absolutas                          #
+############################################
+
+if command -v readlink >/dev/null 2>&1; then
+    R1_ABS=$(readlink -f "$R1")
+    R2_ABS=$(readlink -f "$R2")
+else
+    R1_ABS="$R1"
+    R2_ABS="$R2"
+fi
+
+############################################
+# Crear el samplesheet CSV para Sarek      #
+############################################
+
+SHEET="${OUT}/samplesheet_somatic_${SAMPLE}.csv"
+
+echo "Creando samplesheet: $SHEET"
+cat > "$SHEET" <<EOF
+patient,sex,status,sample,lane,fastq_1,fastq_2
+${SAMPLE},NA,1,${SAMPLE},L1,${R1_ABS},${R2_ABS}
+EOF
+
+############################################
+# Ejecutar nf-core/sarek en modo somático  #
+############################################
+
+echo "Lanzando nf-core/sarek en modo somático (tumor-only) para ${SAMPLE}..."
+nextflow run nf-core/sarek \
+    --input "$SHEET" \
+    --genome GATK.GRCh38 \
+    --outdir "$OUT" \
+    --tools mutect2 \
+    -profile singularity \
+    -c /home/bioinfo1/korostica/test_tutorial/code/local_sarek_8cpus.config \
+    -resume
+
+```
 
 Comando ejecutado:
 
@@ -88,7 +247,7 @@ Comando ejecutado:
 bash sarek_somatic.sh S9_R1.fastq.gz S9_R2.fastq.gz ../results
 ```
 
-El pipeline produjo los VCF somáticos generados por Mutect2, junto con los reportes de control de calidad.
+El pipeline produjo los VCF somáticos generados por Mutect2, junto con los reportes de control de calidad, todos los cuales se pueden encontrar en la carpeta results de este repositorio.
 
 ---
 
@@ -122,7 +281,7 @@ Estos resultados fueron utilizados para los pasos de filtrado, comparación germ
 
 ## **Filtrado de variantes germinales**
 
-El objetivo de este análisis fue obtener un conjunto reducido (10–20) de variantes germinales de alta confianza para su posterior caracterización. 
+El objetivo de este análisis fue obtener un conjunto reducido (10–20) variantes no sinónimas o con impacto moderado/alto. Para lo cual se siguió el siguiente procedimiento con ciertos problemas asociados que se detallan a continuación:
 
 El archivo inicial fue:
 
@@ -334,14 +493,14 @@ bcftools view -H -v indels somatic_PASS.vcf.gz | wc -l
 
 
 El análisis comparativo muestra que el perfil somático contiene más SNPs que el germinal, mientras que el germinal presenta muchos más indels, posiblemente debido a diferencias en la sensibilidad y filtros de Mutect2.  
-Las 57 variantes compartidas indican que una fracción relevante de las variantes somáticas corresponde a variantes germinales heredadas. Las variantes somáticas exclusivas (73) corresponden a las verdaderas candidatas a eventos adquiridos, pero ninguna presentó evidencia clínica en OncoKB.
+Las 57 variantes compartidas indican que una fracción relevante de las variantes somáticas corresponde a variantes germinales heredadas. Las variantes somáticas exclusivas (73) corresponden a las verdaderas candidatas a eventos adquiridos, pero ninguna presentó evidencia clínica en OncoKB lo cual se explica más adelante.
 
 ---
 
 ## **Variantes compartidas**
 
 La coincidencia entre variantes germinales y somáticas se determinó usando bcftools isec, que permite identificar posiciones idénticas presentes en ambos archivos.
-Comando utilizado (una sola línea, compatible con el servidor):
+Comando utilizado:
 
 
 ```
@@ -364,7 +523,7 @@ La presencia de 57 variantes compartidas entre los perfiles germinal y somático
 
 # 🧬 **Análisis de variantes somáticas en OncoKB**
 
-Para la anotación de las variantes somáticas se utilizaron los archivos generados por el pipeline nf-core/sarek en modo tumor-only. En particular, se trabajó con:
+Para la anotación de las variantes somáticas se utilizaron los archivos generados por el pipeline nf-core/sarek en modo tumor-only. 
 
 Se utilizaron:
 
@@ -374,7 +533,7 @@ Se utilizaron:
 
 Es importante señalar que el pipeline proporcionado no ejecutó herramientas de anotación como VEP o SnpEff, por lo que los archivos VCF obtenidos no contienen información sobre el gen afectado, la consecuencia funcional ni nomenclatura HGVS. Esto obligó a seleccionar las variantes únicamente por calidad técnica y no por relevancia biológica o relación con cáncer.
 
-Dado que los VCF **no poseen anotación funcional**, las variantes se ingresaron manualmente en formato:
+Esto también llevo a que por falta de anotaciones funcionales y que la página de OncoKB ya no permite subir archivos VCF para cuentas no pagas y realizar las notaciones las variantes debean buscarse de manera individual por lo que se ingresaron manualmente en formato:
 
 ```
 chr11:118472058:T>A
@@ -389,26 +548,25 @@ Resultado:
 Esto se debe a que OncoKB solo contiene información para mutaciones driver, variantes con evidencia clínica, o alteraciones previamente asociadas a cáncer. Las variantes obtenidas en este análisis:
 
 - Se ubican en una región estrecha del cromosoma 11 (118–119 Mb),  
-- Región estrecha en chr11 sin genes oncológicos  
-- Baja profundidad  
+- Región estrecha en chr11 sin genes oncológicos   
 - Sin anotaciones funcionales  
 - No registradas en bases oncológicas  
 
 Como consecuencia, no fue posible obtener nivel de evidencia, oncogenicidad, cánceres asociados ni información terapéutica, ya que ninguna de las variantes figura en la base de datos OncoKB bajo los criterios clínicos o biológicos que utiliza esta plataforma.
 Conclusión:
 
-➡️ **No se identificó ninguna variante con relevancia clínica o terapéutica según OncoKB.**
+➡️ **No se identificó ninguna variante con relevancia clínica o terapéutica según OncoKB para las 15 variantes seleccionadas.**
 
 ---
 
 # 🧬 **Resultados – Variantes Germinales en gnomAD**
 
 A partir del conjunto de 15 variantes germinales obtenidas tras el filtrado bioinformático, se realizó la búsqueda manual en la base de datos gnomAD v4.1.0, registrando para cada variante la frecuencia global, las frecuencias por ancestría poblacional y su clasificación según rareza.
-Donde se observaron las notaciones similares como se muestra en la siguiente imagen:
+Donde se observaron las notaciones similares al cuadro que aparece en la siguiente imagen:
 
 ![Resultados gnomAD](imagenes/ejemplo_gnoma.png)
 
-Los resultados se registraron en esta tabla:
+Apartir de estos cuadros para cada una de las  variantes seleccionados se obtuvieron los datos exigidos por la tarea y se construyó la siguiente tabla:
 
 | Nº | Variante (chr:pos ref>alt) | AF Global | AF más alta | AF por población | Rareza |
 |----|----------------------------|-----------|--------------|------------------|--------|
@@ -460,7 +618,7 @@ Las variantes somáticas seleccionadas se evaluaron manualmente en **OncoKB**, i
 Por otro lado, las 15 variantes germinales se buscaron en **gnomAD v4.1.0**, registrando sus frecuencias globales y por población. La mayoría resultaron ser **polimorfismos comunes o muy comunes**, con frecuencias alélicas que pueden superar el 60 % en algunas ancestrías. Solo dos variantes se clasificaron como **muy raras**, y cinco no están reportadas en gnomAD, lo que podría indicar variantes extremadamente infrecuentes o posibles artefactos de llamado. En conjunto, el perfil germinal observado es compatible con un trasfondo genético mayormente constituido por variantes frecuentes de la población general, sin evidencia clara de variantes raras altamente sospechosas de enfermedad.
 
 
-La principal limitación del análisis fue la **falta de anotación funcional automática**, que restringió la selección de variantes a criterios puramente técnicos y dificultó la interpretación biológica más profunda. Aun así, el práctico permitió comprender el flujo completo desde los FASTQ hasta los VCF filtrados, y reforzó la importancia de integrar módulos de anotación para futuros análisis, especialmente cuando el objetivo es priorizar variantes con impacto funcional o relevancia clínica.
+La principal limitación del análisis fue la **falta de anotación funcional automática**, que restringió la selección de variantes a criterios puramente técnicos y dificultó la interpretación biológica más profunda. Aun así, el práctico permitió comprender el flujo completo desde los FASTQ hasta los VCF filtrados, como perspectiva podría incluir en el pipeli original la notacion funcional para poder darle más relevancia a biológica a la muestra. Sin embargo, dado el caracter compartido del servidor despues de varios intentos y la cantidad de estudiantes ejecutando la misma tarea ya no pude realizar más pruebas y me limite a los resultados presentados en este informe.
 
 
 ---
