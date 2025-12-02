@@ -221,7 +221,9 @@ Archivo inicial:
 ```
 variant_calling/mutect2/S9/S9.mutect2.filtered.vcf.gz
 ```
+
 El comando no arrojó ningún resultado, confirmando que el archivo no posee anotaciones funcionales. Dado que estas no forman parte de la ejecución estándar del pipeline Sarek, y no fue posible incluir un módulo adicional de anotación en el servidor, el filtrado debía basarse exclusivamente en las métricas de calidad disponibles dentro del VCF.
+
 ---
 
 ### **1. Verificación de anotaciones**
@@ -319,7 +321,9 @@ bcftools view -H -v snps somatic_PASS.vcf.gz | wc -l
 bcftools view -H -v indels somatic_PASS.vcf.gz | wc -l
 6
 ```
+
 El perfil somático muestra más SNPs que el germinal, lo cual puede deberse a mutaciones adquiridas o a diferente sensibilidad de Mutect2.Los indels son mucho más frecuentes en el germinal, probablemente porque Mutect2 descarta la mayoría de los indels por riesgo de falsos positivos.
+
 ---
 
 ## **Variantes compartidas**
