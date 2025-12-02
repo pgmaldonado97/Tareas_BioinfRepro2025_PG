@@ -83,6 +83,24 @@ En esta sesión se realizó el alineamiento de las lecturas FASTQ al genoma de r
 🔗 [Ver informe de la Tarea Unidad 3 Sesión 3](./Unidad%203%20Sesion%203/README.md)
 
 
+## 🧬 Unidad 3 Sesión 3.5 – Reporte de Tarea: Análisis de ADN con CLC Genomics Workbench
+
+En esta sesión se trabajó con los datos de secuenciación analizados mediante CLC Genomics Workbench, aplicando control de calidad, evaluación de cobertura y detección de variantes en un subconjunto del cromosoma 5.  
+Se revisaron las métricas de enriquecimiento, cobertura mínima y profundidad de lectura para interpretar correctamente las variantes detectadas.
+
+📄 **Informe completo:**  
+➡️ [Ver informe de la Tarea Unidad 3 Sesión 3.5](./Unidad%203%20Sesion%203.5/README.md)
+
+
+## 🧬 Unidad 3 Sesión 5 – Análisis germinal y somático con nf-core/sarek
+
+En esta sesión se procesaron los datos FASTQ de la muestra S9 utilizando el pipeline nf-core/sarek para obtener variantes germinales y somáticas.  
+Posteriormente, se realizó el filtrado, comparación entre perfiles, y anotación de las variantes seleccionadas usando OncoKB y gnomAD.
+
+📄 **Informe completo:**  
+➡️ [Ver informe de la Tarea Unidad 3 Sesión 5](Unidad%203%20Sesion%205/README.md)
+
+
 
 
 
