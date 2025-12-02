@@ -322,7 +322,19 @@ bcftools view -H -v indels somatic_PASS.vcf.gz | wc -l
 6
 ```
 
-El perfil somático muestra más SNPs que el germinal, lo cual puede deberse a mutaciones adquiridas o a diferente sensibilidad de Mutect2.Los indels son mucho más frecuentes en el germinal, probablemente porque Mutect2 descarta la mayoría de los indels por riesgo de falsos positivos.
+| Métrica                                 | Germinal (HaplotypeCaller) | Somático (Mutect2) |
+|-----------------------------------------|-----------------------------|---------------------|
+| Variantes totales PASS                  | 148                         | 130                 |
+| SNPs                                    | 116                         | 123                 |
+| Indels                                  | 32                          | 6                   |
+| Variantes compartidas (intersección)    | 57                          | 57                  |
+| Variantes exclusivas de cada tipo       | 148 - 57 = **91**           | 130 - 57 = **73**   |
+| Variantes seleccionadas para análisis   | 15                          | 15                  |
+| Archivo final utilizado                 | germline_S9_final.vcf.gz    | somatic_S9_final.vcf.gz |
+
+
+El análisis comparativo muestra que el perfil somático contiene más SNPs que el germinal, mientras que el germinal presenta muchos más indels, posiblemente debido a diferencias en la sensibilidad y filtros de Mutect2.  
+Las 57 variantes compartidas indican que una fracción relevante de las variantes somáticas corresponde a variantes germinales heredadas. Las variantes somáticas exclusivas (73) corresponden a las verdaderas candidatas a eventos adquiridos, pero ninguna presentó evidencia clínica en OncoKB.
 
 ---
 
@@ -429,6 +441,27 @@ Conclusión:
 
 ➡️ La mayoría de las variantes germinales identificadas son **polimorfismos comunes**.  
 ➡️ Solo dos variantes fueron clasificadas como potencialmente raras.
+
+
+# 🧾 Discusión y conclusiones
+
+En este práctico se logró ejecutar de forma completa el pipeline nf-core/sarek en sus dos modalidades: análisis germinal con HaplotypeCaller y análisis somático tumor-only con Mutect2, utilizando la muestra S9. A partir de los archivos FASTQ iniciales se generaron alineamientos al genoma de referencia GRCh38, reportes de calidad (MultiQC) y archivos VCF tanto germinales como somáticos, que luego fueron filtrados y analizados con herramientas de línea de comando (principalmente bcftools).
+
+Un punto clave del trabajo fue que los VCF generados por el pipeline **no incluían anotaciones funcionales** (campos ANN/CSQ, genes, consecuencias, etc.). Esto impidió aplicar el criterio solicitado originalmente de seleccionar “variantes no sinónimas o de impacto moderado/alto”, ya que ese tipo de clasificación depende directamente de herramientas como VEP o SnpEff. Se intentó incorporar anotación en el servidor, pero por limitaciones técnicas del entorno no fue posible. Frente a esto, se optó por una estrategia alternativa de filtrado basada en **criterios de calidad**, utilizando campos como `FILTER=PASS`, profundidad de lectura (DP), calidad por profundidad (QD) y calidad de mapeo (MQ). Aunque no reemplaza a la anotación funcional, este enfoque sigue las recomendaciones de GATK y permite quedarse con variantes bien soportadas por la evidencia de secuenciación.
+
+A nivel germinal se generó un archivo final con 15 variantes de alta calidad (`germline_S9_final.vcf.gz`), mientras que en el análisis somático se seleccionaron 15 variantes de mejor calidad interna (`somatic_S9_final.vcf.gz`) a partir de 130 variantes PASS. La comparación global entre `germinal_PASS.vcf.gz` y `somatic_PASS.vcf.gz` mostró que:
+
+- El perfil germinal contiene **148 variantes PASS**, mientras que el somático contiene **130**.  
+- El somático presenta más **SNPs** que el germinal (123 vs 116), pero muchos menos **indels** (6 vs 32), lo que refleja los filtros más estrictos de Mutect2 frente al riesgo de falsos positivos en indels.  
+- Se identificaron **57 variantes compartidas** entre ambos perfiles, lo que indica que una parte importante de las variantes detectadas como somáticas corresponde en realidad a variantes heredadas presentes en la línea germinal.
+
+Las variantes somáticas seleccionadas se evaluaron manualmente en **OncoKB**, ingresando las coordenadas en formato `chr:posición:REF>ALT`. Ninguna de las variantes arrojó resultados, lo que es coherente con varias observaciones: se trata de un conjunto pequeño de variantes, concentradas en una región acotada del cromosoma 11, sin anotación funcional disponible, con baja profundidad y sin evidencia previa de estar asociadas a genes oncológicos o a mutaciones driver conocidas. En consecuencia, **no se identificaron variantes con nivel de evidencia clínica, oncogenicidad definida ni información terapéutica** según OncoKB.
+
+Por otro lado, las 15 variantes germinales se buscaron en **gnomAD v4.1.0**, registrando sus frecuencias globales y por población. La mayoría resultaron ser **polimorfismos comunes o muy comunes**, con frecuencias alélicas que pueden superar el 60 % en algunas ancestrías. Solo dos variantes se clasificaron como **muy raras**, y cinco no están reportadas en gnomAD, lo que podría indicar variantes extremadamente infrecuentes o posibles artefactos de llamado. En conjunto, el perfil germinal observado es compatible con un trasfondo genético mayormente constituido por variantes frecuentes de la población general, sin evidencia clara de variantes raras altamente sospechosas de enfermedad.
+
+
+La principal limitación del análisis fue la **falta de anotación funcional automática**, que restringió la selección de variantes a criterios puramente técnicos y dificultó la interpretación biológica más profunda. Aun así, el práctico permitió comprender el flujo completo desde los FASTQ hasta los VCF filtrados, y reforzó la importancia de integrar módulos de anotación para futuros análisis, especialmente cuando el objetivo es priorizar variantes con impacto funcional o relevancia clínica.
+
 
 ---
 
