@@ -1,6 +1,9 @@
 ---
 # Unidad 4 Sesion 1
 # "Análisis de Microarreglos"
+
+Pamela González Maldonado
+
 ---
 
 # 1. Introducción
