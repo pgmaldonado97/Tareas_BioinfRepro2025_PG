@@ -1,6 +1,8 @@
 # Unidad 3 – Sesión 5  
 ## Trabajo práctico: Análisis germinal y somático con nf-core/sarek + interpretación en OncoKB y gnomAD
 
+Pamela Gonzalez Maldonado
+
 ---
 
 ## **Introducción**
