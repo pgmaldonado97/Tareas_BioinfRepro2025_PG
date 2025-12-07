@@ -1,8 +1,10 @@
+# Unidad 4 Sesion 2
 
+# Análisis clustering
 
+Pamela González Maldonado
 
-
-### Selección de genes diferencialmente expresados (contraste de interacción)
+---
 
 En esta sección se seleccionaron los genes que presentan un efecto significativo en el  
 **contraste de interacción** (genotipo × tratamiento), utilizando el archivo de resultados  
@@ -33,7 +35,8 @@ de <- read.csv(file.path(outdir, "DE_results.csv"),
 
 #### 2. Selección de genes con interacción significativa
 
-Se utilizó como umbral de significancia el valor aplicado en el tutorial original:
+Se utilizó como umbral de significancia el valor aplicado en el tutorial de la tarea anterior:
+
 `FDR.Int ≤ 0.19`.
 
 ```r
@@ -85,10 +88,9 @@ write.table(mydata_tarea2,
             col.names = NA,
             quote = FALSE)
 ```
+La matriz `mydata_tarea2_interaction.txt` contiene 104 genes (filas) y 16 muestras (columnas), y constituye la base para los análisis posteriores.
 
 ---
-
-La matriz `mydata_tarea2_interaction.txt` contiene 104 genes (filas) y 16 muestras (columnas), y constituye la base para los análisis posteriores.
 
 ## 2. Selección de genes diferencialmente expresados por interacción y preparación de la matriz
 
@@ -108,7 +110,7 @@ Primero inspeccionamos las columnas que contienen valores de FDR y luego selecci
 
 ### 2.3 Filtrar genes significativos por interacción (FDR ≤ 0.19)
 
-Aplicamos el umbral de FDR definido en la guía (0.19) para seleccionar los genes diferencialmente expresados por interacción.
+Aplicamos el umbral de FDR definido  (0.19) para seleccionar los genes diferencialmente expresados por interacción.
 
     de_int <- de[de[[fdr_int_col]] <= 0.19, ]
     nrow(de_int)     # Cantidad de genes DE por interacción
@@ -123,7 +125,7 @@ En el archivo de resultados, los IDs de sonda se encuentran en la columna `Probe
 
 ---
 
-## 3. Filtrar la matriz normalizada para quedarnos solo con los 104 genes DE
+## 3. Filtrar la matriz normalizada para quedarnos solo con los 104 genes 
 
 Primero cargamos la matriz normalizada generada en el análisis de expresión diferencial (tarea anterior). Esta matriz contiene todas las sondas presentes después de la normalización y el filtrado por detección.
 
@@ -172,8 +174,6 @@ La función `scale()` estandariza por columnas, por lo que se aplica la transpos
     range(mydata_tarea2_scaled)
     # Valores típicos entre ~ -3 y 3 indican que la estandarización se aplicó correctamente.
 
----
-
 ## 5. Guardar la matriz transformada
 
 Finalmente, guardamos la matriz estandarizada que será utilizada en todos los análisis de clustering de la tarea.
@@ -185,7 +185,9 @@ Finalmente, guardamos la matriz estandarizada que será utilizada en todos los a
 
 Esta matriz (`mydata_tarea2_scaled.txt`) corresponde a 104 genes con interacción significativa, normalizados y estandarizados, listos para los análisis de particionamiento (K-means) y clustering jerárquico que se desarrollan en las secciones siguientes.
 
-## Selección del número de clusters mediante el método del codo
+---
+
+## Selección del número de clusters
 
 Para determinar el número óptimo de clusters a partir de los 104 genes diferencialmente expresados por interacción, se aplicó el método del codo utilizando la matriz estandarizada `mydata_tarea2_scaled`. Este método evalúa cómo disminuye la suma de cuadrados intra-grupo (*within-group sum of squares*, WSS) al aumentar el número de clusters \(K\).
 
@@ -208,21 +210,29 @@ Para determinar el número óptimo de clusters a partir de los 104 genes diferen
          main = "Método del codo - Selección de K (Tarea 2)")
     dev.off()
 
-### Figura
+La figura obtenida despues de ejecutar este script en eR se puede observar a continuación: 
 
-Para incluir la figura en el informe en formato markdown:
+![](imagenes/SSQ_by_K_using_kmeans_tarea2.png)
 
-    ![Método del codo para selección de K](output/SSQ_by_K_using_kmeans_tarea2.png)
+### Se seleccionó K = 4 para los sigueintes análisis
 
-### Justificación de la elección de K = 4
+A partir del gráfico del método del codo, la disminución de la suma de cuadrados dentro de grupos (WSS) es inicialmente muy pronunciada entre **K = 1 y K = 3**, y posteriormente se observa un segundo descenso claro hasta **K = 4**. A partir de ese punto, la curva comienza a aplanarse, indicando **rendimientos marginales decrecientes** al aumentar el número de clusters.
 
-En el gráfico generado se observa que la disminución de la WSS es pronunciada hasta **K = 4**, después de lo cual la curva comienza a aplanarse. Esto indica que aumentos posteriores en \(K\) entregan beneficios marginales en la compactación de los clusters.
+Aunque en **K = 5** aparece un valor de WSS ligeramente mayor al de K = 4, este comportamiento no es consistente con la tendencia general y refleja **ruido numérico propio del algoritmo k-means**, que puede variar por la inicialización aleatoria de los centroides. Este incremento no representa una mejora estructural real en la separación de los datos y no genera un “nuevo codo” interpretable.
 
-Por este motivo, para los análisis posteriores se seleccionó **K = 4** como el número óptimo de clusters para esta matriz de expresión.
+**Por lo tanto:**
+
+- **K = 4** es el último punto donde se observa una reducción sustancial y estable de la WSS.  
+- A partir de **K = 5**, la curva pierde pendiente y entra en una zona de estabilización.  
+- **K = 5** no ofrece una ganancia significativa en compactación de los clusters y presenta inestabilidad por artefactos del algoritmo.  
+- Elegir **K = 4** permite un balance óptimo entre simplicidad del modelo y capacidad de capturar la estructura subyacente de los datos.
+
+**En conclusión**, **K = 4** representa el número más adecuado de clusters, ya que corresponde al último cambio significativo en la pendiente de la curva antes de la estabilización, y evita sobresegmentar los datos sin fundamento estadístico.
+
 
 ### Asignación de clusters mediante K-means (K = 4)
 
-Luego de determinar que **K = 4** era el número óptimo de clusters según el método del codo, se procedió a ejecutar el algoritmo K-means utilizando la matriz estandarizada `mydata_tarea2_scaled`.
+Luego de determinar que **K = 4** era el número óptimo de clusters, se procedió a ejecutar el algoritmo K-means utilizando la matriz estandarizada `mydata_tarea2_scaled`.
 
 ```r
 # Ejecutar K-means con K = 4
@@ -237,7 +247,7 @@ mydata_clusters <- data.frame(mydata_tarea2_scaled,
 head(mydata_clusters)
 
 ```
-01imagen
+![](imagenes/01imagen.png)
 
 Este procedimiento asignó cada uno de los 104 genes a uno de los cuatro clusters definidos por el patrón de expresión observado en las 16 muestras.
 
@@ -255,7 +265,7 @@ cluster_means <- aggregate(mydata_tarea2_scaled,
 cluster_means
 ```
 
-02imagen 
+![](imagenes/02imagen.png)
 
 Estos promedios representan el nivel de expresión típico de cada cluster en cada una de las muestras. Esta información es útil para interpretar el comportamiento biológico de los grupos de genes seleccionados y para generar visualizaciones posteriores como mapas de calor o gráficos de perfiles.
 
@@ -280,26 +290,42 @@ Para visualizar cómo se distribuyen los genes según sus perfiles de expresión
     )
     dev.off()
 
-### Inclusión de la figura en el informe
+Se obtuvo la sifuiente figura luego de aplciar el script en R: 
 
-    ![Figura X. Clusplot basado en los dos primeros componentes principales](output/Clusplot_kmeans_tarea2.png)
+![](imagenes/Clusplot_kmeans_tarea2.png)
 
----
-
-## Interpretación del gráfico
 
 El gráfico muestra la distribución de los **104 genes diferencialmente expresados por interacción** en un espacio reducido a dos dimensiones mediante PCA:
 
-- Los **cuatro clústeres** identificados por K-means se representan con **colores y elipses** que indican la región donde se concentran los genes de cada grupo.  
-- Los **Componentes 1 y 2 explican el 57.92% de la variabilidad**, lo cual es adecuado para visualizar tendencias globales.  
-- Se observa que:  
-  - Los clústeres **1 y 2** se encuentran bien separados del resto, lo que indica que sus perfiles de expresión difieren notablemente.  
-  - Los clústeres **3 y 4** están más próximos entre sí, sugiriendo diferencias más sutiles entre esos perfiles de expresión.  
-  - La separación clara entre los clústeres confirma que **k = 4** es una elección coherente, pues mantiene grupos bien definidos y biológicamente interpretables.
+Los cuatro clústeres identificados con K-means se representan mediante distintos colores y elipses, cada una delimitando la región donde se concentran los genes con patrones de expresión similares.
+
+Los genes agrupados en estos clústeres reflejan **perfiles de expresión coordinados**, lo que sugiere que cada grupo puede estar regulado por mecanismos diferentes o participar en procesos biológicos específicos. En este contexto:
+
+- El **Clúster 1** incluye genes cuyo cambio de expresión difiere fuertemente entre castrados y no castrados dentro de un mismo genotipo. Estos genes suelen estar asociados a vías sensibles a hormonas androgénicas, mostrando respuestas amplificadas o reprimidas cuando los niveles hormonales cambian tras la castración.
+
+- El **Clúster 2** agrupa genes con diferencias marcadas entre genotipos, independientemente del estado reproductivo. Esto indica posibles efectos genéticos directos o regulaciones específicas del fondo BY o B, que no dependen de la acción hormonal.
+
+- El **Clúster 3** contiene genes cuya expresión varía especialmente en animales **no castrados tratados**, lo que sugiere una interacción entre señales hormonales endógenas y el tratamiento experimental. Estos genes pueden estar involucrados en rutas metabólicas o regulatorias activadas solo bajo condiciones hormonales completas.
+
+- El **Clúster 4** representa genes con variaciones más sutiles pero consistentes, reflejando patrones intermedios que podrían corresponder a modulaciones finas dentro de un mismo eje biológico, posiblemente genes regulados de manera combinada pero con efectos menos pronunciados.
+
+En conjunto, la estructura observada respalda que los genes seleccionados no responden simplemente a una condición aislada, sino a la **combinación específica de ambas variables experimentales**, lo que otorga relevancia biológica a los grupos detectados.
+
+### Interpretación del PCA y la variabilidad explicada
+
+Los Componentes 1 y 2 explican el **57.92% de la variabilidad total**.  
+Aunque este valor podría considerarse moderado fuera del contexto, en transcriptómica es **completamente normal**, debido a que:
+
+- La expresión génica es altamente multidimensional (**104 genes ≫ 2 componentes**).
+- El PCA solo captura las direcciones de **máxima variación lineal**, no toda la complejidad biológica.
+- Los clústeres **NO se forman en el espacio reducido del PCA**, sino en el espacio completo de los 104 genes. La visualización es solo un apoyo interpretativo.
+
 
 En conjunto, este análisis evidencia que los genes responden de manera diferenciada a la interacción entre tratamiento y genotipo, agrupándose según patrones comunes de expresión.
 
-## Clustering jerárquico (método de Ward)
+---
+
+## Clustering jerárquico
 
 Para complementar el análisis de K-means, se realizó un agrupamiento jerárquico utilizando la matriz de expresión filtrada y estandarizada (`mydata_tarea2_scaled`). Se empleó la distancia euclidiana y el método de Ward.D2, ampliamente usado en análisis transcriptómico por su capacidad de minimizar la varianza dentro de cada clúster.
 
@@ -317,6 +343,8 @@ png("output/hclust_tarea2.png", width = 600, height = 800)
 plot(fit_hc, hang = -1, cex = 0.6, main = "Cluster Dendrogram - Tarea 2")
 dev.off()
 ```
+![](imagenes/hclust_tarea2_samples.png)
+
 El dendrograma muestra la estructura jerárquica de agrupamiento entre los 104 genes seleccionados por interacción (FDR < 0.19). El eje Y representa la distancia a la que los grupos se fusionan, lo cual refleja similitud o disimilitud entre patrones de expresión.
 
 Se observan dos grandes macrogrupos principales, indicando diferencias amplias en los perfiles de expresión.
@@ -326,6 +354,8 @@ En niveles inferiores, el dendrograma revela subdivisiones coherentes con la est
 Fusiones a mayor altura representan clústeres más diferentes entre sí, mientras que fusiones más bajas representan genes con patrones muy similares.
 
 Este análisis complementa el clustering previo y permite visualizar relaciones jerárquicas entre los genes estudiados.
+
+---
 
 ## Dendrograma jerárquico con 4 grupos y delimitación mediante rectángulos
 
@@ -347,7 +377,7 @@ plot(fit_hc, hang = -1, cex = 0.6,
 rect.hclust(fit_hc, k = 4, border = "red")
 dev.off()
 ```
-figura insertar
+![](imagenes/hclust_tarea2_rect.png)
 
 El dendrograma muestra cómo las muestras se agrupan de acuerdo con su similitud basada en la expresión génica normalizada.
 Al cortar el árbol en 4 grupos, se identifican cuatro clústeres bien diferenciados, representados por los rectángulos rojos.
@@ -356,9 +386,9 @@ Los grupos están formados por ramas que se unen a menor altura, lo que indica m
 
 Las alturas más grandes corresponden a fusiones entre grupos más diferentes entre sí, lo que justifica la elección de cuatro clústeres como un punto razonable.
 
-Este análisis complementa el método del codo y permite visualizar la estructura jerárquica de las relaciones entre las muestras.
+Este análisis permite visualizar la estructura jerárquica de las relaciones entre las muestras.
 
-En conjunto, la selección de k = 4 está respaldada tanto por el análisis jerárquico como por K-means.
+---
 
 ## Clustering jerárquico de genes basado en correlación de Pearson
 
@@ -387,7 +417,7 @@ plot(
 )
 dev.off()
 ```
-agrgar imagen 
+![](imagenes/hclust_genes_tarea2.png)
 
 El dendrograma muestra la relación jerárquica entre los genes seleccionados según sus patrones de coexpresión.
 El uso de correlación de Pearson permite identificar genes que varían de forma similar entre las muestras, lo que es especialmente útil en datos transcriptómicos.
