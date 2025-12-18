@@ -103,6 +103,20 @@ Posteriormente, se realizó el filtrado, comparación entre perfiles, y anotaci�
 
 
 
+## 🧬 Unidad 4 – Sesión 3: RNA-seq Differential Expression
+
+En esta sesión se realizó el análisis de expresión diferencial a partir de datos de RNA-seq utilizando **edgeR**, evaluando el efecto del **medio de cultivo (planctónico vs biopelícula)** y del **genotipo (wild type vs mutante)**.  
+El informe incluye una descripción metodológica completa del pipeline (Pasos 1–7) y la ejecución e interpretación del análisis de expresión diferencial (Paso 8), junto con visualizaciones y resultados finales.
+
+📄 **Informe completo:**
+- 👉 [Ver informe en Markdown](Unidad%204%20Sesion%203/report.md)
+- 👉 [Ver informe en PDF](Unidad%204%20Sesion%203/report.pdf)
+
+
+
+
+
+
 
 
 ## Actualizaciones futuras
