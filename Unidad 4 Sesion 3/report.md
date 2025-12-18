@@ -1,4 +1,4 @@
-Tarea 4.3 – RNA-seq Differential Expression (Paso 8)
+Tarea 4.3 – RNA-seq Differential Expression
 ================
 Pamela González
 2025-12-17
@@ -261,7 +261,25 @@ la prueba de expresión diferencial desarrollada en el Paso 8.
 A continuación se incluyen los gráficos generados durante el análisis
 (Paso 8):
 
+### Visualización de pseudoconteos
+
+![Pseudoconteos por medio de cultivo](imagens/pair_expression_culture.png)
+
+![Pseudoconteos por genotipo](imagens/pair_expression_genotype.png)
+
+
+### Distribución de valores P
+
+![Histogramas de P-values](imagens/histograms_pvalue.png)
+
+### Relación P-value vs FDR
+
+![P-value vs FDR](imagens/pvalue_fdr.png)
+
+
 ![](../results/diff_expr/pseudocounts/pair_expression_culture.pdf)<!-- -->![](../results/diff_expr/pseudocounts/pair_expression_genotype.pdf)<!-- -->![](../results/diff_expr/histograms/histograms_pvalue.pdf)<!-- -->![](../results/diff_expr/pvalue_fdr/pvalue_fdr.pdf)<!-- -->
+
+
 
 ------------------------------------------------------------------------
 
@@ -377,3 +395,4 @@ cambios significativos asociados al medio de cultivo y al genotipo. Los
 resultados y visualizaciones incluidos en este informe corresponden a
 las tablas y figuras generadas durante la ejecución del paso 8 y
 almacenadas en la carpeta `results/diff_expr`.
+
