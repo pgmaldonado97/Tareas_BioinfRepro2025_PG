@@ -264,18 +264,18 @@ A continuación se incluyen los gráficos generados durante el análisis
 
 ### Visualización de pseudoconteos
 
-![Pseudoconteos por medio de cultivo](imagens/pair_expression_culture.png)
+![Pseudoconteos por medio de cultivo](imagens/pair_expression_culture.jpg)
 
-![Pseudoconteos por genotipo](imagens/pair_expression_genotype.png)
+![Pseudoconteos por genotipo](imagens/pair_expression_genotype.jpg)
 
 
 ### Distribución de valores P
 
-![Histogramas de P-values](imagens/histograms_pvalue.png)
+![Histogramas de P-values](imagens/histograms_pvalue.jpg)
 
 ### Relación P-value vs FDR
 
-![P-value vs FDR](imagens/pvalue_fdr.png)
+![P-value vs FDR](imagens/pvalue_fdr.jpg)
 
 
 ![](../results/diff_expr/pseudocounts/pair_expression_culture.pdf)<!-- -->![](../results/diff_expr/pseudocounts/pair_expression_genotype.pdf)<!-- -->![](../results/diff_expr/histograms/histograms_pvalue.pdf)<!-- -->![](../results/diff_expr/pvalue_fdr/pvalue_fdr.pdf)<!-- -->
