@@ -101,6 +101,32 @@ Posteriormente, se realizó el filtrado, comparación entre perfiles, y anotaci�
 ➡️ [Ver informe de la Tarea Unidad 3 Sesión 5](Unidad%203%20Sesion%205/README.md)
 
 
+## 🧬 Unidad 4 · Sesión 1 — *Análisis de Microarreglos*
+
+En esta sesión se analizaron datos de expresión génica generados mediante **microarreglos Illumina MouseRef-8 v2.0**, con el objetivo de evaluar cómo interactúan dos factores biológicos relevantes: **el genotipo del cromosoma Y** y **el estado hormonal** (intacto vs. castrado).
+
+El análisis permitió identificar genes y rutas biológicas cuya expresión se ve afectada por el genotipo, el tratamiento hormonal o la interacción entre ambos factores, utilizando criterios estadísticos estrictos y control de falsos descubrimientos.
+
+**Aspectos metodológicos destacados:**
+- Uso de la matriz completa de expresión (~25.697 sondas).
+- Criterio de detección: presencia en al menos el 25 % de las muestras por grupo.
+- Aplicación de 500 permutaciones para los contrastes del modelo.
+- Umbral de significancia ajustada: FDR = 0.19.
+- Criterio *all-probes* para declarar genes significativos.
+
+📄 **Informe completo:**  
+👉 [Ver informe de la Unidad 4 · Sesión 1 – Análisis de Microarreglos](./Unidad%204%20Sesion%201/)
+
+
+
+## 🧬 Unidad 4 · Sesión 2 — *Análisis de Clustering*
+
+En esta sesión se realizó un análisis de **clustering no supervisado** utilizando genes previamente identificados como significativos en el **contraste de interacción (genotipo × tratamiento hormonal)** a partir del análisis de expresión diferencial.
+
+A partir del archivo `DE_results.csv`, se seleccionaron los genes con efecto significativo y se construyó una matriz de expresión normalizada, la cual fue utilizada para explorar patrones globales de expresión génica y relaciones entre muestras mediante técnicas de agrupamiento jerárquico.
+
+📄 **Informe completo:**  
+👉 [Ver informe de la Unidad 4 · Sesión 2 – Análisis de clustering](./Unidad%204%20Sesion%202/)
 
 
 ## 🧬 Unidad 4 – Sesión 3: RNA-seq Differential Expression
